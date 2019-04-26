@@ -1,0 +1,628 @@
+\documentclass[aspectratio=169]{beamer}
+\PassOptionsToPackage{dvipsnames}{xcolor}
+%\usetheme{Antibes}
+\usepackage{graphicx}
+\usepackage{tikz}
+\graphicspath{{images/}} 
+\definecolor{myaqua}{RGB}{27, 143, 150}
+\pgfdeclareimage[width=\paperwidth]{mybackground}{Back_ground_first.pdf}
+\pgfdeclareimage[width=\paperwidth]{background_all}{Back_ground.pdf}
+\setbeamertemplate{itemize item}{\color{myaqua}$\blacksquare$}
+\setbeamerfont{title}{size=\Large}
+
+\setbeamercolor{frametitle}{fg = myaqua}
+\setbeamerfont{frametitle}{size=\huge}
+\setbeamerfont{author}{series=\bf, size=\small}
+\setbeamertemplate{sidebar right}
+
+\setbeamertemplate{title page}{
+
+        \begin{picture}(0,0)
+
+            \put(-28,-152){%
+                \pgfuseimage{mybackground}
+            }
+
+            \put(0,-142){%
+                \begin{minipage}[b][45mm][t]{226mm}
+                    \usebeamerfont{title}{\inserttitle\par}
+                \end{minipage}
+            }
+
+            \put(0,-200){%
+                \begin{minipage}[b][45mm][t]{226mm}
+                    \usebeamerfont{author}{\insertauthor\par}
+                \end{minipage}
+            }
+
+
+            \end{picture}
+
+    }
+    
+
+
+\addtobeamertemplate{frametitle}{\vspace*{0.2cm}\hspace*{0.6cm}}
+
+\title[...]{Development of High Performance \\ Magnetic Sensors and Sensing Tools }
+\author[Our authors]{Profs Xixiang Zhang and Tad W. Patzek, KAUST \\ Presenter Dr. Timofey Eltsov}
+
+
+%\usebackgroundtemplate%
+%{%
+%    \includegraphics[width=\paperwidth,height=\paperheight]{Back_ground.pdf}
+%    
+%}
+
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{image3.jpg}}
+
+
+
+\begin{document}
+
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame}
+
+    \section{Introduction}
+
+\begin{frame}{Motivation}
+
+\begin{columns}[c] 
+
+\column{.7\textwidth}
+
+    
+\begin{small}
+\begin{itemize}
+
+\item Electrically resistive \textcolor{blue} {composite materials} are being introduced to the oil and gas industry
+\item Composite tubulars are \textcolor{blue} {4 times lighter} than made of steel, withstand same pressure and load, resistant to corrosion and lasts more than twice longer
+\item The use of EM transparent casing materials requires the development of appropriate geophysical methods
+\item We use \textcolor{blue} {magnetic sensors} to verify quality of the cement behind casing and perform monitoring of oil field development
+\item Can be used in horizontal and vertical wells
+
+\end{itemize}
+\end{small}
+
+\column{.3\textwidth} % Left column and width
+\includegraphics[scale=0.35]{pipe2.eps}
+\centering
+%\textit{Manifa offshore oilfield, operated by Saudi Aramco [Bloomberg]}
+
+\vspace{0.5 cm}
+
+\begin{tiny}
+\textbf{Casing comparison}
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Parameter                                                                  & Steel & Fiberglass \\ \hline
+Weight 1 m, kg                                                             & 9.5   & 3.1        \\ \hline
+\begin{tabular}[c]{@{}l@{}}Roughness \\ coefficient, mm\end{tabular}       & 0.03  & 0.0015     \\ \hline
+\begin{tabular}[c]{@{}l@{}}Breaking axial \\ tension load, kN\end{tabular} & 278   & 144-427    \\ \hline
+Max temperature, $^o$C                                                              & 200  & 150         \\ \hline
+%Service years                                                              & 1-10  & 20         \\ \hline
+\end{tabular}
+\end{table}
+\end{tiny}
+
+\end{columns}
+ 
+\end{frame}
+
+
+\begin{frame}{Development of magnetic sensing tools \\ for petroleum industry}
+
+\begin{columns}[c] 
+
+\column{.6\textwidth}
+
+\textbf{Magnetic cement quality detection tool:}
+\begin{itemize}
+
+\item Numerical simulation of \textcolor{blue} {magnetic cement response} in the borehole conditions
+\item Laboratory experiments on magnetic cement detection
+\item \textcolor{blue} {Prototyping} of laboratory tool
+
+\end{itemize}
+
+
+\textbf{Monitoring of reservoir development:}
+\begin{itemize}
+
+\item Reservoir development \textcolor{blue} {monitoring} EM tool concept
+\item Numerical simulation of EM response during oil reservoir development
+
+\end{itemize}
+
+
+\column{.38\textwidth} % Left column and width
+\includegraphics[scale=0.0985]{iron_powder.eps}
+\includegraphics[scale=0.1980]{sensor.eps}
+\centering
+
+\end{columns}
+ 
+\end{frame}
+
+% Chapter6.2.eps
+
+\begin{frame}{Schematic representation of cemented well}
+\centering
+\includegraphics[scale=0.5]{scheme_cementing.eps}
+
+\end{frame}
+
+%
+%\begin{frame}{Schematic representation of cemented well}
+%\includegraphics[scale=0.75]{cementing.eps}
+%\end{frame}
+
+\begin{frame}{The Deepwater Horizon, April 20, 2010}
+\begin{columns}[c] 
+
+
+
+\column{.50\textwidth}
+\centering
+\includegraphics[scale=0.8]{book1.eps}
+
+\column{.50\textwidth}
+\centering
+\begin{Large}
+Estimated losses: \\ \textcolor{blue} {62 billion \$}
+\end{Large}
+
+\end{columns} 
+
+\end{frame}
+
+\begin{frame}{Magnetic cement quality detection}
+
+\begin{columns}[c] 
+
+\column{.7\textwidth} % Right column and width
+\begin{block}{}
+\begin{itemize}
+	\item Borehole environment is magnetized  by \textcolor{blue} {a low frequency} induction tool (1-10 kHz)
+	\item Measurements can be made by coils or sensors 
+	\item Alternating magnetic field provides necessary  \textcolor{blue} {noise immunity} of logging measurements and excludes the influence of the geomagnetic field
+	\item The proposed method can determine poor-quality cementation through a non-conductive casing
+	\item 200 MHz induction tool can detect non hardened cement 
+\end{itemize}
+\end{block}
+
+\column{.1\textwidth} % Left column and width
+\includegraphics[scale=0.14]{tool_view.eps}
+\end{columns}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Magnetic susceptibility logging}
+\begin{itemize}
+\item Transmitter coil generates magnetic field, that produces eddy current in the formation 
+\item The secondary magnetic field is registered by receiver coil
+\item Only vertical component of magnetic field is considered - $H_z$
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.62]{Borehole_big.eps}
+\end{center}
+\end{frame}
+%
+%------------------------------------------------
+%
+\begin{frame}
+\frametitle{Magnetic susceptibility logging}
+\begin{itemize}
+\item Primary and secondary magnetic fields induce an \textcolor{blue} {electromotive force} in the receiver coil
+\item Primary magnetic field is much stronger than secondary one
+\item Magnetic susceptibility tool is \textcolor{blue} {calibrated} by response measurement in the air and its subtraction from the measured signal 
+\item There is no secondary magnetic field in the air
+\end{itemize}
+\end{frame}
+%
+%------------------------------------------------
+%
+\begin{frame}
+\frametitle{Tool response measurement}
+
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.4\textwidth} % Right column and width
+{
+\begin{equation}
+H_{z,m} =\textcolor{red}{H_{z,p}} + \textcolor{green}{H_{z,s}}
+\end{equation}
+}
+
+\begin{equation}
+\textcolor{green}{H_{z,s}} = H_{z,m} - \textcolor{red}{H_{z,p}}
+\end{equation}
+
+\vspace{\baselineskip}
+$H_{z,m}$ - measured magnetic field, \textcolor{red}{$H_{z,p}$} - primary magnetic field, \textcolor{green}{$H_{z,s}$} - secondary magnetic field
+
+
+\column{.4\textwidth} % Left column and width
+
+\includegraphics[scale=0.8]{coils.eps}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Magnetic cement logging}
+Cavity filled with cement and 2 cm cement debonding can be detected 
+
+\begin{minipage}[h]{0.21\linewidth}
+\center{\includegraphics[width=1\linewidth]{Borehole_cavity.eps}} \\
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.24\linewidth}
+\center{\includegraphics[width=1\linewidth]{logging_cavity.eps}} \\
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.21\linewidth}
+\center{\includegraphics[width=1\linewidth]{Borehole_debonding.eps}} \\
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.24\linewidth}
+\center{\includegraphics[width=1\linewidth]{logging_debond.eps}} \\
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Cement hardening logging, apparent resistivity}
+
+
+\begin{columns}[c] 
+
+\column{.27\linewidth} 
+\begin{small}
+
+\textcolor{blue} {Apparent resistivity} is calculated from logging signals using homogeneous medium approximation\\
+\vspace*{0.2cm}
+Resistivity obtained from \textcolor{blue} {signal phase} is more sensitive to cement resistivity \\
+\vspace*{0.2cm}
+Singularities can be observed when cross different layers
+
+\end{small}
+
+\column{.18\linewidth} 
+\includegraphics[scale=1.4]{cement_solid_model.eps}
+
+\column{.18\linewidth} 
+Phase
+\includegraphics[scale=0.44]{cement_solid_logg_rapp_phs.eps}
+
+\column{.18\linewidth} 
+Amplitude
+\includegraphics[scale=0.44]{cement_solid_logg_rapp.eps}
+
+\end{columns}
+
+
+\end{frame}
+
+\begin{frame}{Prototyping of lab magnetic sensing tools}
+
+\begin{columns}[c] 
+
+\column{.3\textwidth}
+
+    
+\begin{itemize}
+\item Model of the media was made from \textcolor{blue} {plexiglas}
+\item We manufactured several prototypes of magnetic sensing tool
+\item \textcolor{blue} {Single coil solenoids}, double coil induction tools with and without ferromagnetic core
+%\item Measurements are complicated by EM noise in the lab
+%%\item The most stable results we have with ferritic core when using coaxial cables 
+\end{itemize}
+
+\column{.68\textwidth} % Left column and width
+
+%\includegraphics[scale=0.1]{prototypes.pdf}
+\includegraphics[scale=0.43]{plex_model.eps}
+
+\end{columns}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}{Measurement of incomplete lift of the cement}
+
+\begin{columns}[c] 
+
+\column{.33\textwidth}
+
+\centering
+\includegraphics[scale=0.174]{solenoid_in_model}    
+    
+%\begin{itemize}
+%\item We fill part of the model with sand with iron powder (cement)
+%\item Measuring inductance change every cm we drag solenoid through the borehole
+%\item Lack of iron powder can be seen by value of solenoid inductance
+%\item Inhomogeneous distribution of the iron in sand can be detected with the proposed tool
+%\end{itemize}
+
+
+\column{.33\textwidth}
+\centering
+\includegraphics[scale=0.0428]{model_filled.pdf}
+
+\column{.33\textwidth} % Left column and width
+\centering
+\includegraphics[scale=0.50]{incomplete_lift_log.eps}
+
+
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Measurements of sand with iron powder mix magnetic properties}
+
+
+ \begin{columns}[c] 
+
+\column{.53\textwidth}
+
+    
+\begin{itemize}
+\item Different \textcolor{blue} {mixtures} of sand and iron powder was prepared
+\item Magnetic measurements were made using magnetic permeability meter 
+\item Studied magnetic permeability with 1, 2...10\% of iron
+\item Iron powder makes sand (cement) \textcolor{blue}{magnetic}
+\end{itemize}
+
+\column{.45\textwidth} % Left column and width
+
+\includegraphics[scale=0.39]{sand_mag_data.eps}
+\includegraphics[scale=0.31]{sand_mag.eps}
+
+\end{columns}
+
+
+
+\end{frame}
+
+\begin{frame}{Key Accomplishments - magnetic cement}
+
+\begin{Large}
+\begin{itemize}
+
+\item Inhomogeneities filled with cement are \textcolor{blue} {visible on the logs}
+\item 200 MHz induction tool can be used for cement \textcolor{blue} {solidification detection}
+\item The proposed method can determine poor-quality cementation through a non-conductive casing
+\item Proposed technology was \textcolor{blue} {verified} by lab experiments
+\item Two papers have been published
+
+\end{itemize}
+\end{Large}
+
+
+\end{frame}
+
+
+%\begin{frame}{Monitoring of the oil reservoir development}
+%
+%\begin{itemize}
+%\item Resistivity of brine is very low comparing to resistivity of oil
+%\item Measurement of electromagnetic fields in a developed field can help assess the situation and increase the reservoir operation time.
+%\item To monitor reservoir development, reliable and accurate sensors are needed to measure electromagnetic fields
+%\end{itemize}
+%
+%\end{frame}
+
+\begin{frame}{Feasibility study: water coning in oil reservoir}
+
+\begin{columns}[c] 
+
+\column{.56\textwidth}
+
+%\begin{itemize}
+%\item Water-coning has been observed in those oil producing wells in which water encroaches from below and shuts-off some or most of the oil production
+%\item Most current solutions are reactive rather than proactive
+%\item We present a multi-physics approach to estimating encroachment
+%of a watercone
+%
+%\end{itemize}
+
+\centering
+\includegraphics[scale=0.34]{oil_rig_wc.eps}
+
+\column{.44\textwidth}
+
+\centering
+\includegraphics[scale=0.34]{oil_rig_wc2.eps}
+
+\end{columns}
+
+\end{frame}
+
+%\begin{frame}{Detecting water coning using magnetic sensors}
+%
+%\begin{columns}[c] 
+%
+%\column{.56\textwidth}
+%   
+%\begin{itemize}
+%\item Determining the distance to the water cone will help to change the production rate and extend the life of the well
+%\item When the water cone reaches the well it is necessary to carry out expensive activities
+%\item Our task is to determine the cone approximation using a powerful source and sensitive magnetic sensors
+%\end{itemize}
+%
+%
+%\column{.45\textwidth}
+%
+%\includegraphics[scale=0.34]{oil_rig_wc2.eps}
+%
+%
+%
+%\end{columns}
+%
+%
+%\end{frame}
+
+\begin{frame}{Feasibility study: detecting water coning using magnetic sensors}
+
+\begin{columns}[c] 
+
+\column{.6\textwidth}
+
+    
+\begin{itemize}
+\item The studied medium is irradiated by an electromagnetic field 
+\item \textcolor{blue} {Vertical or horizontal wells}
+\item The approach of the water front changes the measured signal, it is monitored in real time
+\item The reservoir brine salinity is 200000 ppm
+\item Aquifer resistivity is 1.72 Ohm$\cdot$m, oil reservoir resistivity is 27.5 Ohm$\cdot$m
+\end{itemize}
+
+
+\column{.4\textwidth}
+
+\includegraphics[scale=0.34]{rig_monitoring.eps}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Numerical simulation of water coning}
+\begin{itemize}
+
+\item The watercone development is captured using a commercial \textcolor{blue} {reservoir simulator}
+\item The electromagnetic response to the watercone is captured using electromagnetic simulations
+\item We consider a \textcolor{blue} {homogeneous oil reservoir} underlain by an aquifer
+\item Parameters of the simulation are typical for \textcolor{blue} {Middle Eastern} reservoirs
+\end{itemize}
+
+	\begin{minipage}{0.34\linewidth}
+		\textit{Schematic representation of waterconing occurred in thick oil reservoir and part of the mesh used in the simulation}
+	\end{minipage}
+	\begin{minipage}{0.32\linewidth}
+		\center{\includegraphics[scale=0.28]{scheme_watercone.eps} }
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.32\linewidth}
+		\center{\includegraphics[scale=0.19]{mesh.eps} }
+	\end{minipage}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Stages of water cone growth}
+
+
+  \begin{minipage}{\textwidth}
+
+	\begin{minipage}[b]{0.44\textwidth}
+		\centering
+
+
+\begin{tabular}{lll}
+\textbf{Stage \#} & \textbf{\begin{tabular}[c]{@{}l@{}}Time, \\ months\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Distance \\ to cone, m\end{tabular}} \\
+0                 & 0                                                                & 40                                                                      \\
+1                 & 17                                                               & 33.7                                                                    \\
+2                 & 33                                                               & 26.2                                                                    \\
+3                 & 49                                                               & 15.8                                                                    \\
+4                 & 53                                                               & 11.2                                                                    \\
+5                 & 55                                                               & 3.7                                                                     \\
+6                 & 56                                                               & 0
+
+\end{tabular}
+\vspace{1.7cm}
+
+%		\rule{6.4cm}{3.6cm}
+
+
+
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.52\textwidth}
+		\centering
+		\includegraphics[scale=0.21]{cone_stages2.eps}
+
+\textit{Reservoir simulation results. Dashed lines shows location of water front at different times}
+
+
+\end{minipage}
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}{Electromagnetic response}
+
+	\centering
+	\includegraphics[clip,width=0.85\linewidth]{phase_diff_cmg.eps}
+	\\ Apparent resistivity at frequency = 1 kHz vs. distance to the cone. Dynamic saturation distribution is obtained using reservoir simulation. Five EM tools are considered
+
+\end{frame}
+
+\begin{frame}{Key Accomplishments}
+
+\begin{LARGE}
+
+\begin{itemize}
+
+\item We have conducted \textcolor{blue} {reservoir} simulations followed by \textcolor{blue} {electromagnetic} simulations that use the computed fluid distributions
+\item For the assumed reservoir conditions, the watercone can be identified \textcolor{blue} {20 meters} away from the well by high sensitive magnetic sensors
+\item One paper has been submitted
+\end{itemize}
+
+\end{LARGE}
+
+\end{frame}
+
+
+%\begin{frame}{Opportunities and Challenges}
+%
+%\begin{itemize}
+%\item Laboratory measurements are complicated by EM noise
+%\item High sensitive magnetic sensors can be really useful in Oil and Gas exploration
+%\item Industries need accurate and temperature and pressure resistant sensors
+%\end{itemize}
+%
+%\end{frame}
+
+
+
+\begin{frame}{Future Research Plans and Expected Outcomes}
+
+\begin{LARGE}
+
+\begin{itemize}
+\item Laboratory measurements of cement \textcolor{blue} {solidification} induction responce
+\item High performance \textcolor{blue} {sensors testing} on the models of real environment in the lab (received in early April 2019)
+\item Numerical simulation of EM response during \textcolor{blue} {oil field development}
+\end{itemize}
+
+\end{LARGE}
+\end{frame}
+
+\begin{frame}{Published papers in the scope \\ of the Sensor Initiative}
+
+1) T. Eltsov and T. W. Patzek (2018) Numerical simulation of the magnetic cement induction response in the borehole environment. SEG Technical Program Expanded Abstracts 2018: pp. 799-803. 
+
+2) T. Eltsov, T. W. Patzek (2019) Beyond Steel Casing: Detecting Zonal Isolation in the Borehole Environment, SPE Middle East Oil and Gas Show and Conference, 18-21 March, Manama, Bahrain, SPE-195036-MS
+
+3) T. Eltsov, V. Torrealba, H. Hoteit, T.W. Patzek (2019) Electromagnetic detection of the water cone growth during reservoir development, 81st EAGE Conference and Exhibition 2019 (Accepted)
+
+
+\end{frame}
+
+
+\end{document}
